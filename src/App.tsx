@@ -11,7 +11,6 @@ import {
   IconEraser,
   IconTrash,
   IconArchive,
-  IconPhoto,
   IconPlus,
   IconX,
   IconLayoutGrid,
