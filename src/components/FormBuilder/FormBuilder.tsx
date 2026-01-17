@@ -175,10 +175,13 @@ const DraggableFieldItem = ({
 
           {/* Resize Handle */}
           <div 
-             className="absolute bottom-0 right-0 w-4 h-4 cursor-nwse-resize no-drag z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+             className="absolute bottom-0 right-0 w-6 h-6 cursor-nwse-resize no-drag z-30 flex items-end justify-end p-1 opacity-50 hover:opacity-100 transition-opacity"
              onMouseDown={handleResizeMouseDown}
           >
-             <div className="w-1.5 h-1.5 bg-black rounded-full" />
+             {/* Standard Resize Grip Visual (Diagonal Lines) */}
+             <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 6L6 0L0 6H6Z" fill="currentColor" className="text-zinc-400"/>
+             </svg>
           </div>
         </div>
       </div>
@@ -378,7 +381,7 @@ export const FormBuilder = () => {
       </div>
 
       {/* Canvas Area */}
-      <div className="flex-1 flex justify-center bg-zinc-900/50 rounded-2xl border-2 border-dashed border-zinc-800 p-8 overflow-auto min-h-[600px] relative">
+      <div className="flex-1 flex justify-center bg-zinc-100 rounded-2xl border-2 border-dashed border-zinc-300 p-8 overflow-auto min-h-[600px] relative">
         <div 
           ref={canvasRef}
           className="bg-white shadow-2xl relative"
@@ -400,7 +403,7 @@ export const FormBuilder = () => {
 
           {fields.length === 0 && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-center text-gray-300">
+              <div className="text-center text-zinc-400">
                 <p className="text-xl font-bold">A4 Page</p>
                 <p className="text-sm">Click items in the toolbox to add them here.</p>
               </div>
