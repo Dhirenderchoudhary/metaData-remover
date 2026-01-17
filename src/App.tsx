@@ -1,21 +1,50 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, RefreshCw, Lock, Sparkles, CheckCircle, Shield, MapPin, Camera, Calendar, User, FileText, FileType, Layout, Image as ImageIcon } from 'lucide-react';
+import { Download, RefreshCw, Lock, Sparkles, CheckCircle, Shield, MapPin, Camera, Calendar, User, FileText, FileType, Layout, Image as ImageIcon, ChevronLeft } from 'lucide-react';
 import { ImageUploader } from './components/ImageUploader';
 import { removeMetadata, formatBytes } from './utils/fileProcessor';
 import { FormBuilder } from './components/FormBuilder/FormBuilder';
+import { LandingPage } from './components/LandingPage';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'builder'>('home');
+  const [activeTab, setActiveTab] = useState<'landing' | 'home' | 'builder'>('landing');
+
+  if (activeTab === 'landing') {
+    return (
+        <div className="min-h-screen flex flex-col items-center relative overflow-hidden font-sans bg-black">
+             {/* Background Decorative Elements */}
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-zinc-800/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-zinc-800/10 rounded-full blur-[120px]" />
+            </div>
+            
+            <LandingPage onNavigate={setActiveTab} />
+
+            <footer className="mt-auto py-6 text-zinc-600 text-sm flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                <Lock className="w-3 h-3" />
+                <span>Secure Local Processing • No Server Uploads</span>
+            </footer>
+        </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-20 px-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen flex flex-col items-center py-10 px-4 relative overflow-hidden font-sans bg-black">
       
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-zinc-800/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-zinc-800/10 rounded-full blur-[120px]" />
       </div>
+
+      {/* Back to Home Button */}
+      <button 
+        onClick={() => setActiveTab('landing')}
+        className="absolute top-6 left-6 p-2 rounded-full bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all z-50 flex items-center gap-2 text-sm font-medium"
+      >
+        <ChevronLeft className="w-4 h-4" />
+        <span className="hidden md:inline">Back</span>
+      </button>
 
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
