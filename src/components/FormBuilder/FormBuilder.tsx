@@ -9,13 +9,15 @@ const DraggableFieldItem = ({
   onDragStop, 
   onUpdateLabel, 
   onRemove,
-  onResize
+  onResize,
+  onUpdateOptions
 }: { 
   field: FormField, 
   onDragStop: (id: string, e: DraggableEvent, data: DraggableData) => void,
   onUpdateLabel: (id: string, label: string) => void,
   onRemove: (id: string) => void,
-  onResize: (id: string, width: number, height: number) => void
+  onResize: (id: string, width: number, height: number) => void,
+  onUpdateOptions: (id: string, options: string[]) => void
 }) => {
   const nodeRef = useRef(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -100,10 +102,32 @@ const DraggableFieldItem = ({
           {field.type === 'checkbox' && <CheckSquare className="w-4 h-4 text-zinc-400 pointer-events-none" />}
           {field.type === 'radio' && <CircleDot className="w-4 h-4 text-zinc-400 pointer-events-none" />}
           {field.type === 'dropdown' && (
-            <div className="flex items-center justify-between w-full px-2">
-                <span className="text-xs text-zinc-400 pointer-events-none">Select</span>
-                <ChevronDown className="w-3 h-3 text-zinc-400" />
-            </div>
+            isEditing ? (
+                <textarea
+                    ref={inputRef as any}
+                    defaultValue={field.options?.join('\n') || ''}
+                    onBlur={(e) => {
+                        const lines = e.target.value.split('\n').filter(line => line.trim() !== '');
+                        onUpdateOptions(field.id, lines.length > 0 ? lines : ['Option 1', 'Option 2']);
+                        setIsEditing(false);
+                    }}
+                    onKeyDown={(e) => {
+                        e.stopPropagation();
+                    }}
+                    onDoubleClick={(e) => e.stopPropagation()}
+                    placeholder="Enter options, one per line"
+                    className="absolute inset-0 w-full h-full min-h-[60px] bg-white text-xs text-black p-1 resize-none z-50 border border-blue-500 rounded no-drag"
+                    style={{ height: 'auto', minHeight: '100%' }}
+                />
+            ) : (
+                <div className="flex items-center justify-between w-full px-2">
+                    <span className="text-xs text-zinc-400 pointer-events-none truncate">
+                        {field.options && field.options.length > 0 ? field.options[0] : 'Select'}
+                        {field.options && field.options.length > 1 && <span className="text-[10px] ml-1 opacity-50">+{field.options.length - 1}</span>}
+                    </span>
+                    <ChevronDown className="w-3 h-3 text-zinc-400" />
+                </div>
+            )
           )}
           {field.type === 'signature' && (
              <div className="flex flex-col items-center justify-center opacity-50">
@@ -211,6 +235,10 @@ export const FormBuilder = () => {
 
   const updateFieldLabel = (id: string, label: string) => {
     setFields(fields.map(f => f.id === id ? { ...f, label } : f));
+  };
+
+  const updateFieldOptions = (id: string, options: string[]) => {
+      setFields(fields.map(f => f.id === id ? { ...f, options } : f));
   };
 
   const removeField = (id: string) => {
@@ -366,6 +394,7 @@ export const FormBuilder = () => {
               onResize={(id, width, height) => {
                 setFields(fields.map(f => f.id === id ? { ...f, width, height } : f));
               }}
+              onUpdateOptions={updateFieldOptions}
             />
           ))}
 
