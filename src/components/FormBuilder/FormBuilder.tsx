@@ -324,112 +324,112 @@ export const FormBuilder = () => {
     >
       {/* Sidebar / Toolbox */}
       <div className="md:w-64 flex flex-col gap-4">
-        <div className="glass-panel p-6">
+        <div className="bg-zinc-900/95 backdrop-blur-xl border border-zinc-700/50 rounded-2xl shadow-xl p-6">
           <h3 className="text-xl font-bold text-white mb-4">Toolbox</h3>
-          <p className="text-xs text-white/50 mb-4">Click to add fields to the page.</p>
+          <p className="text-xs text-zinc-400 mb-4">Click to add fields to the page.</p>
           <div className="space-y-3">
              <button
               onClick={() => addField('label')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <Type className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Text Label</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('text')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <Type className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Text Input</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('textarea')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <AlignLeft className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Text Area</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('checkbox')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <CheckSquare className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Checkbox</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('radio')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <CircleDot className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Radio Button</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('dropdown')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <ChevronDown className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Dropdown</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('ul')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <List className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Bullet List</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('ol')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <ListOrdered className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Numbered List</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
 
             <button
               onClick={() => addField('signature')}
-              className="w-full flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-colors text-left group"
+              className="w-full flex items-center gap-3 p-3 rounded-lg bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700/30 transition-colors text-left group"
             >
-              <div className="p-2 bg-white/10 text-white rounded-md group-hover:scale-110 transition-transform">
+              <div className="p-2 bg-zinc-700/50 text-white rounded-md group-hover:scale-110 transition-transform">
                 <PenTool className="w-5 h-5" />
               </div>
               <span className="text-white font-medium">Signature Panel</span>
-              <Plus className="w-4 h-4 ml-auto text-white group-hover:text-white" />
+              <Plus className="w-4 h-4 ml-auto text-zinc-400 group-hover:text-white transition-colors" />
             </button>
           </div>
         </div>
 
-        <div className="glass-panel p-6 mt-auto">
+        <div className="bg-zinc-900/95 backdrop-blur-xl border border-zinc-700/50 rounded-2xl shadow-xl p-6 mt-auto">
           <button
             onClick={handleExport}
             disabled={fields.length === 0 || loading}
