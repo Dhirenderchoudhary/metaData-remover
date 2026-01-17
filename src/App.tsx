@@ -11,19 +11,44 @@ function App() {
 
   if (activeTab === 'landing') {
     return (
-        <div className="min-h-screen flex flex-col items-center relative overflow-hidden font-sans bg-black">
-             {/* Background Decorative Elements */}
+        <div className="h-full w-full flex flex-col items-center relative overflow-hidden font-sans bg-black m-0 p-0">
+             {/* Enhanced Background Decorative Elements */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-zinc-800/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-zinc-800/10 rounded-full blur-[120px]" />
+                <motion.div 
+                    className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-500/20 rounded-full blur-[150px]"
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div 
+                    className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-pink-500/20 rounded-full blur-[150px]"
+                    animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
+                <motion.div 
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-cyan-500/15 rounded-full blur-[120px]"
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.2, 0.4, 0.2],
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                />
             </div>
             
             <LandingPage onNavigate={setActiveTab} />
 
-            <footer className="mt-auto py-6 text-zinc-600 text-sm flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <motion.footer 
+                className="absolute bottom-0 left-0 right-0 py-4 md:py-6 text-white/60 text-xs md:text-sm flex items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity relative z-10"
+                whileHover={{ scale: 1.05 }}
+            >
                 <Lock className="w-3 h-3" />
                 <span>Secure Local Processing • No Server Uploads</span>
-            </footer>
+            </motion.footer>
         </div>
     );
   }
