@@ -263,12 +263,89 @@ export const FormBuilder = () => {
         label = type === 'ul' ? 'Bullet List' : 'Numbered List';
     }
 
+    // Smart positioning: Find the best position that doesn't overlap
+    const pageWidth = 595;
+    const pageHeight = 842;
+    const padding = 20;
+    const spacing = 15; // Space between fields
+    
+    let newX = padding;
+    let newY = padding;
+    
+    if (fields.length > 0) {
+      // Find the bottom-most point of all existing fields
+      let maxBottom = 0;
+      let rightmostRight = 0;
+      
+      fields.forEach(field => {
+        const bottom = field.y + field.height;
+        const right = field.x + field.width;
+        if (bottom > maxBottom) {
+          maxBottom = bottom;
+        }
+        if (right > rightmostRight) {
+          rightmostRight = right;
+        }
+      });
+      
+      // Try placing below the bottom-most field
+      newY = maxBottom + spacing;
+      
+      // If it would go outside page bounds, try a new column
+      if (newY + height > pageHeight - padding) {
+        // Start a new column on the right
+        newX = rightmostRight + spacing;
+        newY = padding;
+        
+        // If new column would go outside, wrap to top and find empty space
+        if (newX + width > pageWidth - padding) {
+          newX = padding;
+          newY = padding;
+          
+          // Find an empty spot by checking for overlaps
+          let foundPosition = false;
+          let attempts = 0;
+          const maxAttempts = 50;
+          
+          while (!foundPosition && attempts < maxAttempts) {
+            let hasOverlap = false;
+            
+            // Check if this position overlaps with any existing field
+            for (const field of fields) {
+              const overlapX = !(newX + width + spacing <= field.x || newX >= field.x + field.width + spacing);
+              const overlapY = !(newY + height + spacing <= field.y || newY >= field.y + field.height + spacing);
+              
+              if (overlapX && overlapY) {
+                hasOverlap = true;
+                break;
+              }
+            }
+            
+            if (!hasOverlap && newX + width <= pageWidth - padding && newY + height <= pageHeight - padding) {
+              foundPosition = true;
+            } else {
+              // Try next position: move right, then wrap to next row
+              newX += width + spacing;
+              if (newX + width > pageWidth - padding) {
+                newX = padding;
+                newY += height + spacing;
+                if (newY + height > pageHeight - padding) {
+                  newY = padding;
+                }
+              }
+            }
+            attempts++;
+          }
+        }
+      }
+    }
+
     const newField: FormField = {
       id: `field_${Date.now()}`,
       type,
       label,
-      x: 50,
-      y: 50 + fields.length * 40,
+      x: newX,
+      y: newY,
       width,
       height,
       options: (type === 'dropdown' || type === 'ul' || type === 'ol') ? ['Option 1', 'Option 2', 'Option 3'] : undefined
