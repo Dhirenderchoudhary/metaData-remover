@@ -16,10 +16,12 @@ import {
   IconLayoutGrid,
   IconList,
   IconBrandX,
-  IconHeart
+  IconHeart,
+  IconFileText
 } from '@tabler/icons-react';
 import { FileUpload } from './components/ui/file-upload';
 import { FormBuilder } from './components/FormBuilder/FormBuilder';
+import { PDFEditor } from './components/PDFEditor/PDFEditor';
 import { removeMetadata, formatBytes } from './utils/imageProcessor';
 import { Button } from './components/ui/stateful-button';
 
@@ -395,7 +397,7 @@ function MetadataRemover() {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'builder'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'builder' | 'editor'>('home');
 
   return (
     <div className="min-h-screen flex flex-col items-center py-12 md:py-20 px-4 relative overflow-hidden selection:bg-primary/30 font-sans">
@@ -418,11 +420,11 @@ export default function App() {
           Privacy <span className="text-primary">Tools</span>
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          Remove sensitive metadata from photos and build interactive PDF forms. All processing happens locally in your browser—your data never leaves your device.
+          Remove sensitive metadata from photos, build interactive PDF forms, and edit PDFs. All processing happens locally in your browser—your data never leaves your device.
         </p>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-2 gap-4 mb-10 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -456,6 +458,25 @@ export default function App() {
                 <h3 className="font-bold text-foreground mb-2">PDF Form Builder</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Create interactive PDF forms with drag-and-drop fields. Build professional forms and make them readonly after filling.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="group relative p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all hover:shadow-lg hover:shadow-primary/5"
+          >
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconFileText size={24} className="text-primary" />
+              </div>
+              <div className="flex-1 text-left">
+                <h3 className="font-bold text-foreground mb-2">PDF Editor</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Combine multiple PDFs, remove pages, extract pages, or add text annotations. All editing happens locally in your browser.
                 </p>
               </div>
             </div>
@@ -500,6 +521,24 @@ export default function App() {
               <IconWand size={16} /> Form Builder
             </span>
           </button>
+          <button
+            onClick={() => setActiveTab('editor')}
+            className={`
+                            relative px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300
+                            ${activeTab === 'editor' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}
+                        `}
+          >
+            {activeTab === 'editor' && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-primary rounded-xl shadow-lg shadow-primary/20"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10 flex items-center gap-2">
+              <IconFileText size={16} /> PDF Editor
+            </span>
+          </button>
         </div>
       </motion.div>
 
@@ -515,7 +554,7 @@ export default function App() {
             >
               <MetadataRemover />
             </motion.div>
-          ) : (
+          ) : activeTab === 'builder' ? (
             <motion.div
               key="builder"
               initial={{ opacity: 0, x: 20 }}
@@ -524,6 +563,16 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <FormBuilder />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="editor"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <PDFEditor />
             </motion.div>
           )}
         </AnimatePresence>
