@@ -28,6 +28,20 @@ import {
   IconHash,
   IconMarkdown,
   IconTypography,
+  IconCalculator,
+  IconPlayerPlay,
+  IconLink,
+  IconEyeOff,
+  IconWorld,
+  IconSpeakerphone,
+  IconClock,
+  IconRadio,
+  IconDice,
+  IconDeviceDesktop,
+  IconClipboard,
+  IconBarcode,
+  IconCrop,
+  IconPalette,
 } from '@tabler/icons-react';
 import { FileUpload } from './components/ui/file-upload';
 import { FormBuilder } from './components/FormBuilder/FormBuilder';
@@ -47,6 +61,33 @@ import { TextUtilities } from './components/TextUtilities/TextUtilities';
 import { YAMLFormatter } from './components/YAMLFormatter/YAMLFormatter';
 import { HTMLCSSFormatter } from './components/HTMLCSSFormatter/HTMLCSSFormatter';
 import { UUIDGenerator } from './components/UUIDGenerator/UUIDGenerator';
+import { Calculator } from './components/Calculator/Calculator';
+import { Stopwatch } from './components/Stopwatch/Stopwatch';
+import { JWTDecoder } from './components/JWTDecoder/JWTDecoder';
+import { URLEncoder } from './components/URLEncoder/URLEncoder';
+import { PasswordStrength } from './components/PasswordStrength/PasswordStrength';
+import { DataMasking } from './components/DataMasking/DataMasking';
+import { RegexTester } from './components/RegexTester/RegexTester';
+import { JSONToTypeScript } from './components/JSONToTypeScript/JSONToTypeScript';
+import { ColorPicker } from './components/ColorPicker/ColorPicker';
+import { APIBuilder } from './components/APIBuilder/APIBuilder';
+import { CodeMinifier } from './components/CodeMinifier/CodeMinifier';
+import { LoremIpsum } from './components/LoremIpsum/LoremIpsum';
+import { TextToSpeech } from './components/TextToSpeech/TextToSpeech';
+import { ImageResizer } from './components/ImageResizer/ImageResizer';
+import { ImageFormatConverter } from './components/ImageFormatConverter/ImageFormatConverter';
+import { QRCodeReader } from './components/QRCodeReader/QRCodeReader';
+import { ImageCropper } from './components/ImageCropper/ImageCropper';
+import { UnitConverter } from './components/UnitConverter/UnitConverter';
+import { DateTimeConverter } from './components/DateTimeConverter/DateTimeConverter';
+import { NumberBaseConverter } from './components/NumberBaseConverter/NumberBaseConverter';
+import { MorseCode } from './components/MorseCode/MorseCode';
+import { RomanNumeral } from './components/RomanNumeral/RomanNumeral';
+import { BarcodeGenerator } from './components/BarcodeGenerator/BarcodeGenerator';
+import { RandomData } from './components/RandomData/RandomData';
+import { BrowserInfo } from './components/BrowserInfo/BrowserInfo';
+import { ClipboardHistory } from './components/ClipboardHistory/ClipboardHistory';
+import { ColorPalette } from './components/ColorPalette/ColorPalette';
 import { removeMetadata, formatBytes } from './utils/imageProcessor';
 import { Button } from './components/ui/stateful-button';
 
@@ -422,7 +463,7 @@ function MetadataRemover() {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'builder' | 'editor' | 'compressor' | 'converter' | 'json-formatter' | 'xml-json-converter' | 'text-diff' | 'password-generator' | 'qrcode' | 'base64' | 'hash-generator' | 'csv-json-converter' | 'markdown-editor' | 'text-utilities' | 'yaml-formatter' | 'html-css-formatter' | 'uuid-generator'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'builder' | 'editor' | 'compressor' | 'converter' | 'json-formatter' | 'xml-json-converter' | 'text-diff' | 'password-generator' | 'qrcode' | 'base64' | 'hash-generator' | 'csv-json-converter' | 'markdown-editor' | 'text-utilities' | 'yaml-formatter' | 'html-css-formatter' | 'uuid-generator' | 'calculator' | 'stopwatch' | 'jwt-decoder' | 'url-encoder' | 'password-strength' | 'data-masking' | 'regex-tester' | 'json-to-typescript' | 'color-picker' | 'api-builder' | 'code-minifier' | 'lorem-ipsum' | 'text-to-speech' | 'image-resizer' | 'image-format-converter' | 'qrcode-reader' | 'image-cropper' | 'unit-converter' | 'datetime-converter' | 'number-base-converter' | 'morse-code' | 'roman-numeral' | 'barcode-generator' | 'random-data' | 'browser-info' | 'clipboard-history' | 'color-palette'>('home');
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Scroll to content when tab changes (except on initial load)
@@ -824,6 +865,547 @@ export default function App() {
                 <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">UUID</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                   Generate UUIDs
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.9 }}
+            onClick={() => handleTabChange('calculator')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconCalculator size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Calculator</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Basic calculator
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.0 }}
+            onClick={() => handleTabChange('stopwatch')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconPlayerPlay size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Stopwatch</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Timer with laps
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          {/* New Features Batch 1 */}
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.1 }}
+            onClick={() => handleTabChange('jwt-decoder')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconKey size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">JWT Decoder</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Decode JWT tokens
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.2 }}
+            onClick={() => handleTabChange('url-encoder')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconLink size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">URL Encoder</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Encode/decode URLs
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.3 }}
+            onClick={() => handleTabChange('password-strength')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconShield size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Password Strength</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Check password strength
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.4 }}
+            onClick={() => handleTabChange('data-masking')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconEyeOff size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Data Masking</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Mask sensitive data
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.5 }}
+            onClick={() => handleTabChange('regex-tester')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconCode size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Regex Tester</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Test regex patterns
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.6 }}
+            onClick={() => handleTabChange('json-to-typescript')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconCode size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">JSON to TS</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Generate TS interfaces
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.7 }}
+            onClick={() => handleTabChange('color-picker')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconPalette size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Color Picker</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Pick & convert colors
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.8 }}
+            onClick={() => handleTabChange('api-builder')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconWorld size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">API Builder</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Build HTTP requests
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.9 }}
+            onClick={() => handleTabChange('code-minifier')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconCode size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Code Minifier</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Minify JS/CSS/HTML
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.0 }}
+            onClick={() => handleTabChange('lorem-ipsum')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconFileText size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Lorem Ipsum</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Generate placeholder text
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.1 }}
+            onClick={() => handleTabChange('text-to-speech')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconSpeakerphone size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Text to Speech</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Convert text to speech
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.2 }}
+            onClick={() => handleTabChange('image-resizer')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconPhoto size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Image Resizer</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Resize images
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.3 }}
+            onClick={() => handleTabChange('image-format-converter')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconPhoto size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Format Converter</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Convert image formats
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.4 }}
+            onClick={() => handleTabChange('qrcode-reader')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconQrcode size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">QR Reader</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Scan QR codes
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.5 }}
+            onClick={() => handleTabChange('image-cropper')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconCrop size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Image Cropper</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Crop images
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.6 }}
+            onClick={() => handleTabChange('unit-converter')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconArrowsExchange size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Unit Converter</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Convert units
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.7 }}
+            onClick={() => handleTabChange('datetime-converter')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconClock size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Date/Time</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Convert date/time
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.8 }}
+            onClick={() => handleTabChange('number-base-converter')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconHash size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Base Converter</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Convert number bases
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.9 }}
+            onClick={() => handleTabChange('morse-code')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconRadio size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Morse Code</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Encode/decode Morse
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.0 }}
+            onClick={() => handleTabChange('roman-numeral')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconHash size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Roman Numeral</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Convert Roman numerals
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.1 }}
+            onClick={() => handleTabChange('barcode-generator')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconBarcode size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Barcode</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Generate barcodes
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.2 }}
+            onClick={() => handleTabChange('random-data')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconDice size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Random Data</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Generate random data
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.3 }}
+            onClick={() => handleTabChange('browser-info')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconDeviceDesktop size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Browser Info</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Display browser info
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.4 }}
+            onClick={() => handleTabChange('clipboard-history')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconClipboard size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Clipboard</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Clipboard history
+                </p>
+              </div>
+            </div>
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 4.5 }}
+            onClick={() => handleTabChange('color-palette')}
+            className="group relative p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <IconPalette size={24} className="text-primary" />
+              </div>
+              <div className="w-full min-h-[3.5rem]">
+                <h3 className="font-bold text-sm text-foreground mb-1.5 break-words">Color Palette</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                  Generate palettes
                 </p>
               </div>
             </div>
@@ -1230,6 +1812,116 @@ export default function App() {
               <span className="sm:hidden">UUID</span>
             </span>
           </button>
+          <button
+            onClick={() => handleTabChange('calculator')}
+            className={`
+                            relative px-4 md:px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex-shrink-0
+                            ${activeTab === 'calculator' 
+                              ? 'text-primary-foreground shadow-md' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}
+                        `}
+          >
+            {activeTab === 'calculator' && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-primary rounded-xl shadow-lg shadow-primary/30"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+              <IconCalculator size={16} className={activeTab === 'calculator' ? 'text-primary-foreground' : 'text-muted-foreground'} /> 
+              <span className="hidden sm:inline">Calculator</span>
+              <span className="sm:hidden">Calc</span>
+            </span>
+          </button>
+          <button
+            onClick={() => handleTabChange('stopwatch')}
+            className={`
+                            relative px-4 md:px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex-shrink-0
+                            ${activeTab === 'stopwatch' 
+                              ? 'text-primary-foreground shadow-md' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}
+                        `}
+          >
+            {activeTab === 'stopwatch' && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-primary rounded-xl shadow-lg shadow-primary/30"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+              <IconPlayerPlay size={16} className={activeTab === 'stopwatch' ? 'text-primary-foreground' : 'text-muted-foreground'} /> 
+              <span className="hidden sm:inline">Stopwatch</span>
+              <span className="sm:hidden">Timer</span>
+            </span>
+          </button>
+          <button
+            onClick={() => handleTabChange('jwt-decoder')}
+            className={`
+                            relative px-4 md:px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex-shrink-0
+                            ${activeTab === 'jwt-decoder' 
+                              ? 'text-primary-foreground shadow-md' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}
+                        `}
+          >
+            {activeTab === 'jwt-decoder' && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-primary rounded-xl shadow-lg shadow-primary/30"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+              <IconKey size={16} className={activeTab === 'jwt-decoder' ? 'text-primary-foreground' : 'text-muted-foreground'} /> 
+              <span className="hidden sm:inline">JWT</span>
+              <span className="sm:hidden">JWT</span>
+            </span>
+          </button>
+          <button
+            onClick={() => handleTabChange('url-encoder')}
+            className={`
+                            relative px-4 md:px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex-shrink-0
+                            ${activeTab === 'url-encoder' 
+                              ? 'text-primary-foreground shadow-md' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}
+                        `}
+          >
+            {activeTab === 'url-encoder' && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-primary rounded-xl shadow-lg shadow-primary/30"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+              <IconLink size={16} className={activeTab === 'url-encoder' ? 'text-primary-foreground' : 'text-muted-foreground'} /> 
+              <span className="hidden sm:inline">URL</span>
+              <span className="sm:hidden">URL</span>
+            </span>
+          </button>
+          <button
+            onClick={() => handleTabChange('unit-converter')}
+            className={`
+                            relative px-4 md:px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex-shrink-0
+                            ${activeTab === 'unit-converter' 
+                              ? 'text-primary-foreground shadow-md' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}
+                        `}
+          >
+            {activeTab === 'unit-converter' && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-primary rounded-xl shadow-lg shadow-primary/30"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+              <IconArrowsExchange size={16} className={activeTab === 'unit-converter' ? 'text-primary-foreground' : 'text-muted-foreground'} /> 
+              <span className="hidden sm:inline">Units</span>
+              <span className="sm:hidden">Units</span>
+            </span>
+          </button>
           </div>
         </div>
       </motion.div>
@@ -1406,7 +2098,7 @@ export default function App() {
             >
               <HTMLCSSFormatter />
             </motion.div>
-          ) : (
+          ) : activeTab === 'uuid-generator' ? (
             <motion.div
               key="uuid-generator"
               initial={{ opacity: 0, x: 20 }}
@@ -1415,6 +2107,126 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <UUIDGenerator />
+            </motion.div>
+          ) : activeTab === 'calculator' ? (
+            <motion.div
+              key="calculator"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Calculator />
+            </motion.div>
+          ) : activeTab === 'stopwatch' ? (
+            <motion.div
+              key="stopwatch"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Stopwatch />
+            </motion.div>
+          ) : activeTab === 'jwt-decoder' ? (
+            <motion.div key="jwt-decoder" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <JWTDecoder />
+            </motion.div>
+          ) : activeTab === 'url-encoder' ? (
+            <motion.div key="url-encoder" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <URLEncoder />
+            </motion.div>
+          ) : activeTab === 'password-strength' ? (
+            <motion.div key="password-strength" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <PasswordStrength />
+            </motion.div>
+          ) : activeTab === 'data-masking' ? (
+            <motion.div key="data-masking" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <DataMasking />
+            </motion.div>
+          ) : activeTab === 'regex-tester' ? (
+            <motion.div key="regex-tester" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <RegexTester />
+            </motion.div>
+          ) : activeTab === 'json-to-typescript' ? (
+            <motion.div key="json-to-typescript" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <JSONToTypeScript />
+            </motion.div>
+          ) : activeTab === 'color-picker' ? (
+            <motion.div key="color-picker" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <ColorPicker />
+            </motion.div>
+          ) : activeTab === 'api-builder' ? (
+            <motion.div key="api-builder" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <APIBuilder />
+            </motion.div>
+          ) : activeTab === 'code-minifier' ? (
+            <motion.div key="code-minifier" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <CodeMinifier />
+            </motion.div>
+          ) : activeTab === 'lorem-ipsum' ? (
+            <motion.div key="lorem-ipsum" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <LoremIpsum />
+            </motion.div>
+          ) : activeTab === 'text-to-speech' ? (
+            <motion.div key="text-to-speech" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <TextToSpeech />
+            </motion.div>
+          ) : activeTab === 'image-resizer' ? (
+            <motion.div key="image-resizer" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <ImageResizer />
+            </motion.div>
+          ) : activeTab === 'image-format-converter' ? (
+            <motion.div key="image-format-converter" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <ImageFormatConverter />
+            </motion.div>
+          ) : activeTab === 'qrcode-reader' ? (
+            <motion.div key="qrcode-reader" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <QRCodeReader />
+            </motion.div>
+          ) : activeTab === 'image-cropper' ? (
+            <motion.div key="image-cropper" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <ImageCropper />
+            </motion.div>
+          ) : activeTab === 'unit-converter' ? (
+            <motion.div key="unit-converter" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <UnitConverter />
+            </motion.div>
+          ) : activeTab === 'datetime-converter' ? (
+            <motion.div key="datetime-converter" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <DateTimeConverter />
+            </motion.div>
+          ) : activeTab === 'number-base-converter' ? (
+            <motion.div key="number-base-converter" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <NumberBaseConverter />
+            </motion.div>
+          ) : activeTab === 'morse-code' ? (
+            <motion.div key="morse-code" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <MorseCode />
+            </motion.div>
+          ) : activeTab === 'roman-numeral' ? (
+            <motion.div key="roman-numeral" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <RomanNumeral />
+            </motion.div>
+          ) : activeTab === 'barcode-generator' ? (
+            <motion.div key="barcode-generator" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <BarcodeGenerator />
+            </motion.div>
+          ) : activeTab === 'random-data' ? (
+            <motion.div key="random-data" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <RandomData />
+            </motion.div>
+          ) : activeTab === 'browser-info' ? (
+            <motion.div key="browser-info" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <BrowserInfo />
+            </motion.div>
+          ) : activeTab === 'clipboard-history' ? (
+            <motion.div key="clipboard-history" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <ClipboardHistory />
+            </motion.div>
+          ) : (
+            <motion.div key="color-palette" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}>
+              <ColorPalette />
             </motion.div>
           )}
         </AnimatePresence>
