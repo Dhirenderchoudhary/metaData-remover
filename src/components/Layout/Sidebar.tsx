@@ -105,7 +105,7 @@ export const Sidebar = React.memo(({ isOpen, onClose }: SidebarProps) => {
                                             onClick={() => {
                                                 if (window.innerWidth < 768) onClose();
                                             }}
-                                            className={({ isActive }) => `
+                                            className={({ isActive }: { isActive: boolean }) => `
                                                 group flex items-center gap-3 px-4 h-9 rounded-lg text-[14px] font-medium transition-all relative
                                                 ${isActive
                                                     ? 'text-foreground bg-primary/10 shadow-sm'
