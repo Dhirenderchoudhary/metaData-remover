@@ -38,12 +38,12 @@ export const Notes = () => {
   const { showToast } = useToast();
 
   // Create refs for each note - use a ref to store refs map and keep them stable
-  const noteRefsMap = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
+  const noteRefsMap = useRef<Record<string, React.RefObject<HTMLElement | null>>>({});
   
   // Get or create ref for a note (called during render but stable)
-  const getNoteRef = (id: string): React.RefObject<HTMLDivElement> => {
+  const getNoteRef = (id: string): React.RefObject<HTMLElement | null> => {
     if (!noteRefsMap.current[id]) {
-      noteRefsMap.current[id] = React.createRef<HTMLDivElement>();
+      noteRefsMap.current[id] = React.createRef<HTMLElement | null>();
     }
     return noteRefsMap.current[id];
   };
