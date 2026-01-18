@@ -523,7 +523,7 @@ export default function App() {
               <div className="w-full">
                 <h3 className="font-bold text-sm md:text-base text-foreground mb-1">File Converter</h3>
                 <p className="text-xs text-muted-foreground leading-snug">
-                  PDF ↔ DOCX conversion
+                  PDF, DOCX & EPUB conversion
                 </p>
               </div>
             </div>

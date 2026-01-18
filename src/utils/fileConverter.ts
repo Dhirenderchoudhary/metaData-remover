@@ -431,7 +431,9 @@ export async function convertPDFToEPUB(file: File): Promise<Blob> {
     <rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/>
   </rootfiles>
 </container>`;
-    epub.folder('META-INF').file('container.xml', containerXml);
+    const metaInfFolder = epub.folder('META-INF');
+    if (!metaInfFolder) throw new Error('Failed to create META-INF folder');
+    metaInfFolder.file('container.xml', containerXml);
     
     // Create HTML files for each chapter
     const htmlFiles: string[] = [];
@@ -454,7 +456,9 @@ export async function convertPDFToEPUB(file: File): Promise<Blob> {
 </html>`;
       
       const filename = `chapter-${index + 1}.xhtml`;
-      epub.folder('OEBPS').file(filename, htmlContent);
+      const oebpsFolder = epub.folder('OEBPS');
+      if (!oebpsFolder) throw new Error('Failed to create OEBPS folder');
+      oebpsFolder.file(filename, htmlContent);
       htmlFiles.push(filename);
     });
     
@@ -463,7 +467,7 @@ export async function convertPDFToEPUB(file: File): Promise<Blob> {
       `    <item id="chapter-${index + 1}" href="${file}" media-type="application/xhtml+xml"/>`
     ).join('\n');
     
-    const spineItems = htmlFiles.map((file, index) => 
+    const spineItems = htmlFiles.map((_, index) => 
       `    <itemref idref="chapter-${index + 1}"/>`
     ).join('\n');
     
@@ -483,7 +487,9 @@ ${spineItems}
   </spine>
 </package>`;
     
-    epub.folder('OEBPS').file('content.opf', opfContent);
+    const oebpsFolderFinal = epub.folder('OEBPS');
+    if (!oebpsFolderFinal) throw new Error('Failed to access OEBPS folder');
+    oebpsFolderFinal.file('content.opf', opfContent);
     
     // Generate EPUB blob
     const epubBlob = await epub.generateAsync({ type: 'blob', mimeType: 'application/epub+zip' });
